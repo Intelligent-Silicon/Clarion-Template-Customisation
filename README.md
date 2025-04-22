@@ -5,7 +5,6 @@ Customisations to perform on the default shipping templates.
  
 ### Window Resizing Template
 Resize Strategy = Spread ( Default )
-
 Resize Strategy = Centred
 
 Override Control Strategies
