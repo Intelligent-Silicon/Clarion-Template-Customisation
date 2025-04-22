@@ -68,7 +68,7 @@ Change to
 
 Find What: Lock Width
  
-Filters: *.*
+Filters: **.**
 
 Directory: C:\Clarion11\template\win
 
