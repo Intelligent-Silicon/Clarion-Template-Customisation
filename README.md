@@ -36,7 +36,7 @@ Search using Find in Files
  
 Find What: Centred
  
-Filters: *.*
+Filters: `*.*`
 
 Directory: C:\Clarion11\template\win
 
