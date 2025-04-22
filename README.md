@@ -5,19 +5,30 @@ Customisations to perform on the default shipping templates.
  
 ### Window Resizing Template
 Resize Strategy = Spread ( Default )
+
 Resize Strategy = Centred
 
 Override Control Strategies
+
 Horizontal Resize Strategy = Resize ( Default )
+
 Vertical Resize Strategy = Resize ( Default )
+
 Horizontal Positional Strategy = Move ( Default )
+
 Vertical Positional Strategy = Move ( Default )
 
-This configuration requires the least number of HVHV changes to individual controls 
+
+This configuration requires the least number of HVHV changes to individual controls using the Clarion Resizing Template. Other 3rd party resizing templates exist, or you can write your own.
+ 
 Horizontal Resize Strategy = Lock Width
+
 Vertical Resize Strategy = Lock Height
+
 Horizontal Positional Strategy = Fix Left (or Right if using Arabic Right To Left languages)
+
 Vertical Positional Strategy = Fix Top
+
 
 Notepad++
 Search using Find in Files 
