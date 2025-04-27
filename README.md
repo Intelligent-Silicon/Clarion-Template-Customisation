@@ -112,3 +112,57 @@ Change to
 ```
 #PROMPT('Vertical P&ositional Strategy',DROP('Move|Lock Position|Fix Bottom|Fix Top|Fix Center|Fix Nearest|Fix To Center')),%VertPositional,DEFAULT('Fix Top'),AT(10,15,170),PROMPTAT(10,2,170)
 ```
+
+
+### Remove blank PRE() from AppGen generated Global Data
+
+ABProgram.TPW
+```
+#GROUP(%GenerateGlobalDataField,%pGlobalDataLocalExternal='EXTERNAL')
+```
+
+Change to
+```
+#GROUP(%GenerateGlobalDataField,%pGlobalDataLocalExternal='EXTERNAL')
+#Declare(%GlobalDataStatementMod,String)
+#Set(%GlobalDataStatementMod,%GlobalDataStatement)
+#Call(%RemoveBlankPrefix,%GlobalDataStatementMod)
+```
+
+```
+    #IF(%GlobalDataInDictionary AND %GlobalExternal AND %GlobalDataLevel = %BaseDataLevel AND %GlobalData ~= '')
+%[20]GlobalData %GlobalDataStatement,EXTERNAL,DLL(_ABCDllMode_) !33
+    #ELSE
+        #IF(UPPER(%pGlobalDataLocalExternal)='EXTERNAL' AND %GlobalDataLevel = %BaseDataLevel AND %GlobalData ~= '')
+%[20 + ((%GlobalDataLevel - %BaseDataLevel) * 2)]GlobalData %GlobalDataStatement,EXTERNAL
+        #ELSE
+%[20 + ((%GlobalDataLevel - %BaseDataLevel) * 2)]GlobalData %GlobalDataStatement
+        #ENDIF
+    #ENDIF
+```
+
+Change to
+```
+    #IF(%GlobalDataInDictionary AND %GlobalExternal AND %GlobalDataLevel = %BaseDataLevel AND %GlobalData ~= '')
+%[20]GlobalData %GlobalDataStatementMod,EXTERNAL,DLL(_ABCDllMode_) !33
+    #ELSE
+        #IF(UPPER(%pGlobalDataLocalExternal)='EXTERNAL' AND %GlobalDataLevel = %BaseDataLevel AND %GlobalData ~= '')
+%[20 + ((%GlobalDataLevel - %BaseDataLevel) * 2)]GlobalData %GlobalDataStatementMod,EXTERNAL
+        #ELSE
+%[20 + ((%GlobalDataLevel - %BaseDataLevel) * 2)]GlobalData %GlobalDataStatementMod
+        #ENDIF
+    #ENDIF
+```
+
+At the end of the file add...
+```
+#!
+#Group(%RemoveBlankPrefix, *%pVarDeclaration)
+#Declare( %PrefixPosStart, Long )
+#Set( %PrefixPosStart, StrPos( Upper( %pVarDeclaration ), ',<32>*PRE(<32>*)' ) )
+#IF( %PrefixPosStart )																	
+	#Set( %pVarDeclaration, Sub( %pVarDeclaration, 1 , %PrefixPosStart-1 ) ) 
+#ENDIF
+#Return
+```
+
