@@ -114,7 +114,7 @@ Change to
 ```
 
 
-### Remove blank PRE() from AppGen generated Global Data
+### Remove blank PRE() from AppGen generated Global Data Group's
 
 ABProgram.TPW
 ```
