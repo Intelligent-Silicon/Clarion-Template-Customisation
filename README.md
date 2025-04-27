@@ -157,7 +157,7 @@ Change to
     #ENDIF
 ```
 
-At the end of the file add...
+At the end of the file ABProgram.TPW add...
 
 This #Group is accessible to all the template files at Global, Module and Procedure level so only needs to be declared once before it performs its programmed changes.
 ```
