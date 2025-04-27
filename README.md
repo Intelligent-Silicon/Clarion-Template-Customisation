@@ -158,6 +158,7 @@ Change to
 ```
 
 At the end of the file add...
+
 This #Group is accessible to all the template files at Global, Module and Procedure level so only needs to be declared once before it performs its programmed changes.
 ```
 #!
