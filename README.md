@@ -208,6 +208,8 @@ Change to
 ```
 #FOR(%LocalData)
 #IF(LEFT(%LocalDataStatement,6)='&CLASS')
+   #SET(%ValueConstruct,EXTRACT(%LocalDataStatement,'&CLASS',1))
+   #IF(NOT %ValueConstruct)
 ```
 
 Change to
@@ -215,7 +217,22 @@ Change to
 #FOR(%LocalData)
 #Set(%LocalDataStatementMod,%LocalDataStatement)
 #Call(%RemoveBlankPrefix,%LocalDataStatementMod)
-#IF(LEFT(%LocalDataStatement,6)='&CLASS')
+#IF(LEFT(%LocalDataStatementMod,6)='&CLASS')
+   #SET(%ValueConstruct,EXTRACT(%LocalDataStatementMod,'&CLASS',1))
+   #IF(NOT %ValueConstruct)
+```
+
+```
+#IF(LEFT(%LocalDataStatement,5)='CLASS')
+    #SET(%ValueConstruct,EXTRACT(%LocalDataStatement,'CLASS',1))
+    #IF(%ValueConstruct)
+```
+
+Change to
+```
+#IF(LEFT(%LocalDataStatement,5)='CLASS')
+    #SET(%ValueConstruct,EXTRACT(%LocalDataStatementMod,'CLASS',1))
+    #IF(%ValueConstruct)
 ```
 
 ```
