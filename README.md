@@ -116,7 +116,7 @@ Change to
 
 ### Remove blank PRE() from AppGen generated Global, Module & Procedure Group's
 
-This demonstrates how you can change the default IDE generated data statement, for global, module and procedure Dct & AppGen data by removing the default PRE() from GROUP structures. Taking this further, the #Group(%RemoveBlankPrefix, \*%pVarDeclaration) can be the start of remapping Clarion Data Types to other date types found in other programming languages, or to perform changes which can interact with new Drivers and any new data types such as Capesofts Clarion Object Based Drivers [1] . It wouldnt take much to even search through field names looking for instances of a string such as UUID and then remap the data type to a suitable UUID/GUID specific data type automatically.
+This demonstrates how you can change the default IDE generated data statement, for global, module and procedure Dct & AppGen data by removing the default PRE() from GROUP structures. Taking this further, the #Group(%RemoveBlankPrefix, \*%pVarDeclaration) can be the start of remapping Clarion Data Types to other date types found in other programming languages, or to perform changes which can interact with new Drivers and any new data types such as Capesofts Clarion Object Based Drivers [1] . It wouldnt take much to even search through field/variable names looking for instances of a search term such as UUID and then remap the data type to a suitable UUID/GUID specific data type automatically.
  
 
 ABProgram.TPW
