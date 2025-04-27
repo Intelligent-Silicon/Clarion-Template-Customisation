@@ -166,3 +166,69 @@ At the end of the file add...
 #Return
 ```
 
+ABMODULE.TPW
+
+```
+#MODULE(GENERATED,'Generated Source Module'),HLP('~TPLModuleGenerated.htm') #! MODULE header
+```
+
+Change to
+```
+#MODULE(GENERATED,'Generated Source Module'),HLP('~TPLModuleGenerated.htm') #! MODULE header
+#Declare(%ModuleDataStatementMod,String)
+```
+
+```
+#FOR(%ModuleData)
+%ModuleData   %ModuleDataStatement
+#ENDFOR
+```
+
+Change to
+```
+#FOR(%ModuleData)
+#Set(%ModuleDataStatementMod,%ModuleDataStatement)
+#Call(%RemoveBlankPrefix,%ModuleDataStatementMod)
+%ModuleData   %ModuleDataStatementMod
+#ENDFOR
+```
+
+
+ABProcs.tpw
+
+```
+#GROUP(%GenerateLocalData)
+```
+
+Change to
+```
+#GROUP(%GenerateLocalData)
+#Declare(%LocalDataStatementMod,String)
+```
+```
+#FOR(%LocalData)
+#IF(LEFT(%LocalDataStatement,6)='&CLASS')
+```
+
+Change to
+```
+#FOR(%LocalData)
+#Set(%LocalDataStatementMod,%LocalDataStatement)
+#Call(%RemoveBlankPrefix,%LocalDataStatementMod)
+#IF(LEFT(%LocalDataStatement,6)='&CLASS')
+```
+
+```
+#ENDIF
+%[20]LocalData %LocalDataStatement #<! %LocalDataDescription
+#ENDIF
+#ENDFOR
+```
+
+Change to
+```
+#ENDIF
+%[20]LocalData %LocalDataStatementMod #<! %LocalDataDescription
+#ENDIF
+#ENDFOR
+```
