@@ -150,9 +150,6 @@ $ClarionTemplateFilePath1		= $ClarionTemplateFolder +'\'+ $ClarionTemplateFilena
 $ClarionTemplateFilePath2		= $ClarionTemplateFolder +'\'+ $ClarionTemplateFilename2
 
 
-# https://learn.microsoft.com/en-us/answers/questions/467133/find-and-replace-in-a-file-using-powershell
-
-
 IF ($PatchChoice -eq "P")
 {
 Write-Host ""
