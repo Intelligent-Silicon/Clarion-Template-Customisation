@@ -6,9 +6,9 @@ A powershell Script to change the default resizing options with an option to rev
 
 ### Instructions
 
-Download script to required folder, open Powershell with Administrator rights, navigate to the required folder, type ```.\resize.ps1```
+Download script to required folder, open Powershell with Administrator rights, navigate to the required folder ```cd "c:\Long Folder Name with spaces"```, type ```.\resize.ps1```
 
-Check the ```.\resize.ps1``` script for a relevant explanation on Powershell Execution Policy and scope which can affect running a script.
+Check the ```.\resize.ps1``` script for a relevant explanation on Powershell Execution Policy and Scope which can affect running a script.
 
 To prevent changing elements of the template, comment out with the hash (#) symbol the command starting with $content (see below) that corresponds to the relevant $OriginalStringX and $PatchStringX.
 
