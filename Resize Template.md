@@ -2,7 +2,7 @@
 
 ### Overview 
 
-A powershell Script to change the default resizing options with an option to revert (undo) the changes.
+A Powershell Script to change the default resizing options with an option to revert (undo) the changes.
 
 ### Instructions
 
