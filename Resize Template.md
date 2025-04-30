@@ -19,6 +19,10 @@ $content = [System.IO.File]::ReadAllText($ClarionTemplateFilePathX).Replace($Ori
 
 [Resize.ps1](/resize.ps1)
 
+![Screenshot](https://github.com/Intelligent-Silicon/Clarion-Template-Customisation/tree/main/ResizeTemplates.png)
+
+
+
 ### Patch Changes
 
 Set controls without an override to Centred.
