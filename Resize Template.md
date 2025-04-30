@@ -12,9 +12,12 @@ Check the ```.\resize.ps1``` script for a relevant explanation on Powershell Exe
 
 To prevent changing elements of the template, comment out with the hash (#) symbol the command starting with $content (see below) that corresponds to the relevant $OriginalStringX and $PatchStringX.
 
+```
 $content = [System.IO.File]::ReadAllText($ClarionTemplateFilePathX).Replace($OriginalStringX,$PatchStringX)
 [System.IO.File]::WriteAllText($ClarionTemplateFilePathX, $content)
+```
 
+[Resize.ps1](/resize.ps1)
 
 ### Patch Changes
 
