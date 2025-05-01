@@ -3,6 +3,7 @@
 ### Overview 
 
 A Powershell script to modify the templates to remove the blank group prefixes from dictionary and AppGen group's with an option to revert (undo) the changes.
+This demonstrates how you can change the default IDE generated data statement, for global, module and procedure Dct & AppGen data by removing the default PRE() from GROUP structures.
 
 ### Instructions
 
