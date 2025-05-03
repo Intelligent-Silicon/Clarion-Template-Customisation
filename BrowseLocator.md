@@ -1,4 +1,4 @@
-# Group Prefix Template Mod
+# Browse Locator Template Mod
 
 ### Overview 
 
