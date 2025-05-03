@@ -16,3 +16,8 @@ A Screenshot in each section shows you what to expect.
 ### Remove blank PRE() from Dct & AppGen generated Global, Module & Procedure Group's
 
 [Remove blank Group Prefixes](Group%20Prefixes.md)
+
+
+### Set Browse Locator to required Locator Type 
+
+[Set Browse Locator](BrowseLocator.md)
