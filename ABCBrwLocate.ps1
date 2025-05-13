@@ -1,6 +1,7 @@
 <#
     Powershell Script to Patch or Revert Clarion Template changes.
 	
+	Alignment is suited to Notepad++
 	
 	https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.5
 	
