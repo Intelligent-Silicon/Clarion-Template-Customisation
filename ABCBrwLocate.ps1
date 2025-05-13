@@ -21,10 +21,6 @@
 	
 #>
 
-# https://stackoverflow.com/questions/45023110/powershell-foreach-get-the-number-of-line
-# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_functions?view=powershell-7.5
-
-
 Function	Set-TemplateFileNames
 {
 	$Global:TemplateABBrowse 		= "ABBROWSE.TPW"	# ABC Browse Template, Variable Scope: Global
@@ -37,7 +33,7 @@ Function	Set-RegExStrings
 	$Global:RegExABCBrowseSortNo			= "%LocatorType,DEFAULT\('(?:None|Step|Entry|Incremental|Filtered)'\)"		# ABC Browse Template
 	$Global:RegExABCBrowseSortType			= "%SortLocatorType,DEFAULT\('(?:None|Step|Entry|Incremental|Filtered)'\)"	# ABC Browse Template
 	
-	$Global:RegExABCQBBLocatorDefault		= "%%LocatorType DEFAULT  \('(?:None|Step|Entry|Incremental|Filtered)'\)"	# ABC Wizard Control Template
+	$Global:RegExABCQBBLocatorDefault		= "%%LocatorType DEFAULT  \('(?:None|Step|Entry|Incremental|Filtered)'\)"		# ABC Wizard Control Template
 	$Global:RegExABCQBBLocatorWhen			= "WHEN  \(%ValueConstruct\) \('(?:None|Step|Entry|Incremental|Filtered)'\)"	# ABC Wizard Control Template
 }
 
@@ -104,7 +100,7 @@ Function 	Display-Notice
 Function 	Get-InputChoice
 {
 	$Global:InputChoice	= (Read-Host "Set Browse Locator to [D]efault (Step), [N]one, [S]tep, [E]ntry, [I]ncremental, [F]iltered or [Q]uit").ToUpper()
-	# In a lowercase value is input, the lowercase value and not uppercase value is passed to the function Patch-Template as a parameter.
+	# If a lowercase value is input, the lowercase value and not uppercase value is passed to the function Patch-Template as a parameter!
 	#$InputChoice		= Read-Host "Set Browse Locator to [D]efault (Step), [N]one, [S]tep, [E]ntry, [I]ncremental, [F]iltered or [Q]uit"
 	#$InputChoice		= $InputChoice.ToUpper() 
 	
@@ -176,37 +172,8 @@ Function 	Set-TemplateFilePaths
 {
 	$TemplateFolder						= $TemplateFolder.TrimEnd('\')
 	$Global:TemplateFilePathABBrowse	= $TemplateFolder +'\'+ $TemplateABBrowse		# ABC Browse Template File, Variable Scope: Global
-	$Global:TemplateFilePathABWCntrl	= $TemplateFolder +'\'+ $TemplateABWCntrl		# ABC Browse Wizard Template File, Variable Scope, Global
+	$Global:TemplateFilePathABWCntrl	= $TemplateFolder +'\'+ $TemplateABWCntrl		# ABC Wizard Control Template File, Variable Scope: Global
 }																				
-
-Function 	Debug-Check 
-{
-	Param
-	(
-		[string[]]$PatchChoice,				# Parameter inputs
-		[string[]]$TemplateFilePath,		#		/\
-		[string[]]$RegEx,					#		|
-		$PatchStringNone,					#		|			Using [string[]] removes the object attributes like $PatchStringNone.Length
-		$PatchStringStep,					#		|
-		$PatchStringEntry,					#		|
-		$PatchStringIncremental,			#	   \/
-		$PatchStringFiltered				# Parameter inputs
-    )
-	
-	<# 
-	# Used to help debug the parameter values
-	Write-Host ""
-	Write-Host "PatchChoice is $PatchChoice"
-	Write-Host "TemplateFilePath is $TemplateFilePath"
-	Write-Host "RegEx is $RegEx"
-	Write-Host "PatchStringNone is $PatchStringNone"
-	Write-Host "PatchStringStep is $PatchStringStep"
-	Write-Host "PatchStringEntry is $PatchStringEntry"
-	Write-Host "PatchStringIncremental is $PatchStringIncremental"
-	Write-Host "PatchStringFiltered is $PatchStringFiltered"
-	Write-Host ""
-	#>
-}
 
 Function 	Patch-Template 
 {
@@ -286,21 +253,20 @@ Function  	Display-Finish
 
 # Lets call the above functions. Functions need to be declared before they can be called in PowerShell
 Display-Notice
+
 Set-TemplateFileNames
 Get-TemplateFolder
 Set-TemplateFilePaths
 Get-InputChoice
+
 Set-RegExStrings
+
 Set-PatchString-ABBrowse-SortNo
 Set-PatchString-ABBrowse-SortType
 Set-PatchString-ABBrowse-DefaultProc
 
 Set-PatchString-ABBrowse-QBBLocatorDefault
 Set-PatchString-ABBrowse-QBBLocatorWhen
-
-Debug-Check 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseDefaultProc 		$PatchStringABBrowseNDefaultProc 	$PatchStringABBrowseSDefaultProc 	$PatchStringABBrowseEDefaultProc 	$PatchStringABBrowseIDefaultProc 	$PatchStringABBrowseFDefaultProc   
-Debug-Check 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseSortNo 			$PatchStringABBrowseNSortNo 		$PatchStringABBrowseSSortNo 		$PatchStringABBrowseESortNo 		$PatchStringABBrowseISortNo 		$PatchStringABBrowseFSortNo	   
-Debug-Check 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseSortType 			$PatchStringABBrowseNSortType 		$PatchStringABBrowseSSortType 		$PatchStringABBrowseESortType 		$PatchStringABBrowseISortType 		$PatchStringABBrowseFSortType	   
 
 Patch-Template 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseDefaultProc 		$PatchStringABBrowseNDefaultProc 	$PatchStringABBrowseSDefaultProc 	$PatchStringABBrowseEDefaultProc 	$PatchStringABBrowseIDefaultProc 	$PatchStringABBrowseFDefaultProc   
 Patch-Template 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseSortNo 			$PatchStringABBrowseNSortNo 		$PatchStringABBrowseSSortNo 		$PatchStringABBrowseESortNo 		$PatchStringABBrowseISortNo 		$PatchStringABBrowseFSortNo	   
