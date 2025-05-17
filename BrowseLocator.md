@@ -15,9 +15,18 @@ To prevent changing elements of the template, comment out each line with the has
 
 
 
+Modify ABC template 
 
 [ABCBrwLocate.ps1](/ABCBrwLocate.ps1)
 
 ![Screenshot](https://github.com/Intelligent-Silicon/Clarion-Template-Customisation/tree/main/ABCBrwLocate.png)
+
+
+Modify Clarion template
+
+[ClaBrwLocate.ps1](/ClaBrwLocate.ps1)
+
+![Screenshot](https://github.com/Intelligent-Silicon/Clarion-Template-Customisation/tree/main/ClaBrwLocate.png)
+
 
 
