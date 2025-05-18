@@ -2,7 +2,7 @@
 
 ### Overview 
 
-A Powershell script to modify the templates to set the default ABC browse locator with an option to revert (undo) the changes.
+A Powershell script to modify the templates to set the default ABC and Clarion (CW) browse locator with an option to revert (undo) the changes.
 
 
 ### Instructions
