@@ -24,63 +24,63 @@
 
 Function	Set-TemplateFileNames
 {
-	$Global:TemplateClaBrowse 		= "CTLBrow.TPW"		# Clarion Browse Template, Variable Scope: Global
-	$Global:TemplateClaWCntrl 		= "WControl.TPW"	# Clarion Wizard Control Template, Variable Scope: Global
+	$Global:TemplateABBrowse 		= "ABBROWSE.TPW"	# ABC Browse Template, Variable Scope: Global
+	$Global:TemplateABWCntrl 		= "ABWCNTRL.TPW"	# ABC Wizard Control Template, Variable Scope: Global
 }
 
 Function	Set-RegExStrings
 {
-	$Global:RegExClaBrowLocatorType			= "%LocatorType,DEFAULT\('(?:None|Step|Entry|Incremental|Filtered)'\)"			# Clarion Browse Template
-	$Global:RegExClaBrowSortLocatorType		= "%SortLocatorType,DEFAULT\('(?:None|Step|Entry|Incremental|Filtered)'\)"		# Clarion Browse Template
-	$Global:RegExClaBrowBrowseLocatorType	= "#SET\(%BrowseLocatorType,'(?:None|Step|Entry|Incremental|Filtered)'\)"		# Clarion Browse Template
-	$Global:RegExClaWCntQBBLocatorType		= "%%LocatorType DEFAULT  \('(?:None|Step|Entry|Incremental|Filtered)'\)"		# Clarion WControl Template
-	$Global:RegExClaWCntQBBLocator			= "WHEN  \(%ValueConstruct\) \('(?:None|Step|Entry|Incremental|Filtered)'\)"	# Clarion WControl Template
+	$Global:RegExABCBrowseDefaultProc 		= "%LocatorType STRING  \('(?:None|Step|Entry|Incremental|Filtered)'\)" 	# ABC Browse Template
+	$Global:RegExABCBrowseSortNo			= "%LocatorType,DEFAULT\('(?:None|Step|Entry|Incremental|Filtered)'\)"		# ABC Browse Template
+	$Global:RegExABCBrowseSortType			= "%SortLocatorType,DEFAULT\('(?:None|Step|Entry|Incremental|Filtered)'\)"	# ABC Browse Template
 	
+	$Global:RegExABCQBBLocatorDefault		= "%%LocatorType DEFAULT  \('(?:None|Step|Entry|Incremental|Filtered)'\)"		# ABC Wizard Control Template
+	$Global:RegExABCQBBLocatorWhen			= "WHEN  \(%ValueConstruct\) \('(?:None|Step|Entry|Incremental|Filtered)'\)"	# ABC Wizard Control Template
 }
 
-Function	Set-PatchString-ClaBrow-LocatorType
+Function	Set-PatchString-ABBrowse-DefaultProc
 {
-	$Global:PatchStringClaBrowLocatorTypeN 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('None')"
-	$Global:PatchStringClaBrowLocatorTypeS 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Step')"
-	$Global:PatchStringClaBrowLocatorTypeE 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Entry')"
-	$Global:PatchStringClaBrowLocatorTypeI 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Incremental')"
-	$Global:PatchStringClaBrowLocatorTypeF 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Filtered')"
+	$Global:PatchStringABBrowseNDefaultProc = "%LocatorType STRING  ('None')"
+	$Global:PatchStringABBrowseSDefaultProc = "%LocatorType STRING  ('Step')"
+	$Global:PatchStringABBrowseEDefaultProc = "%LocatorType STRING  ('Entry')"
+	$Global:PatchStringABBrowseIDefaultProc = "%LocatorType STRING  ('Incremental')"
+	$Global:PatchStringABBrowseFDefaultProc = "%LocatorType STRING  ('Filtered')"
 }
 
-Function	Set-PatchString-ClaBrow-SortLocatorType
+Function	Set-PatchString-ABBrowse-SortNo
 {
-	$Global:PatchStringClaBrowSortLocatorTypeN 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('None')"
-	$Global:PatchStringClaBrowSortLocatorTypeS 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Step')"
-	$Global:PatchStringClaBrowSortLocatorTypeE 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Entry')"
-	$Global:PatchStringClaBrowSortLocatorTypeI 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Incremental')"
-	$Global:PatchStringClaBrowSortLocatorTypeF 			= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Filtered')"
+	$Global:PatchStringABBrowseNSortNo		= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('None'),WHENACCEPTED(%SetLocatorClass(0,%LocatorType))"
+	$Global:PatchStringABBrowseSSortNo		= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Step'),WHENACCEPTED(%SetLocatorClass(0,%LocatorType))"
+	$Global:PatchStringABBrowseESortNo		= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Entry'),WHENACCEPTED(%SetLocatorClass(0,%LocatorType))"
+	$Global:PatchStringABBrowseISortNo		= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Incremental'),WHENACCEPTED(%SetLocatorClass(0,%LocatorType))"
+	$Global:PatchStringABBrowseFSortNo		= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%LocatorType,DEFAULT('Filtered'),WHENACCEPTED(%SetLocatorClass(0,%LocatorType))"
 }
 
-Function	Set-PatchString-ClaBrow-BrowseLocatorType
+Function	Set-PatchString-ABBrowse-SortType
 {
-	$Global:PatchStringClaBrowBrowseLocatorTypeN 		= "#SET(%BrowseLocatorType,'None')"
-	$Global:PatchStringClaBrowBrowseLocatorTypeS 		= "#SET(%BrowseLocatorType,'Step')"
-	$Global:PatchStringClaBrowBrowseLocatorTypeE 		= "#SET(%BrowseLocatorType,'Entry')"
-	$Global:PatchStringClaBrowBrowseLocatorTypeI 		= "#SET(%BrowseLocatorType,'Incremental')"
-	$Global:PatchStringClaBrowBrowseLocatorTypeF 		= "#SET(%BrowseLocatorType,'Filtered')"
+	$Global:PatchStringABBrowseNSortType 	= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('None'),WHENACCEPTED(%SetLocatorClass(%SortOrder,%SortLocatorType))"
+	$Global:PatchStringABBrowseSSortType 	= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Step'),WHENACCEPTED(%SetLocatorClass(%SortOrder,%SortLocatorType))"
+	$Global:PatchStringABBrowseESortType 	= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Entry'),WHENACCEPTED(%SetLocatorClass(%SortOrder,%SortLocatorType))"
+	$Global:PatchStringABBrowseISortType 	= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Incremental'),WHENACCEPTED(%SetLocatorClass(%SortOrder,%SortLocatorType))"
+	$Global:PatchStringABBrowseFSortType 	= "#PROMPT('&Locator:',DROP('None|Step|Entry|Incremental|Filtered')),%SortLocatorType,DEFAULT('Filtered'),WHENACCEPTED(%SetLocatorClass(%SortOrder,%SortLocatorType))"
 }
 
-Function	Set-PatchString-ClaWCnt-QBBLocatorType
+Function	Set-PatchString-ABBrowse-QBBLocatorDefault
 {
-	$Global:PatchStringClaWCntQBBLocatorTypeN 			= "%%LocatorType DEFAULT  ('None')"
-	$Global:PatchStringClaWCntQBBLocatorTypeS 			= "%%LocatorType DEFAULT  ('Step')"
-	$Global:PatchStringClaWCntQBBLocatorTypeE 			= "%%LocatorType DEFAULT  ('Entry')"
-	$Global:PatchStringClaWCntQBBLocatorTypeI 			= "%%LocatorType DEFAULT  ('Incremental')"
-	$Global:PatchStringClaWCntQBBLocatorTypeF 			= "%%LocatorType DEFAULT  ('Filtered')"
+	$Global:PatchStringABQBBLocatorNDefault 	= "%%LocatorType DEFAULT  ('None')"
+	$Global:PatchStringABQBBLocatorSDefault 	= "%%LocatorType DEFAULT  ('Step')"
+	$Global:PatchStringABQBBLocatorEDefault 	= "%%LocatorType DEFAULT  ('Entry')"
+	$Global:PatchStringABQBBLocatorIDefault 	= "%%LocatorType DEFAULT  ('Incremental')"
+	$Global:PatchStringABQBBLocatorFDefault 	= "%%LocatorType DEFAULT  ('Filtered')"
 }
 
-Function	Set-PatchString-ClaWCnt-QBBLocator
+Function	Set-PatchString-ABBrowse-QBBLocatorWhen
 {
-	$Global:PatchStringClaWCntQBBLocatorN 			= "WHEN  (%ValueConstruct) ('None')"
-	$Global:PatchStringClaWCntQBBLocatorS 			= "WHEN  (%ValueConstruct) ('Step')"
-	$Global:PatchStringClaWCntQBBLocatorE 			= "WHEN  (%ValueConstruct) ('Entry')"
-	$Global:PatchStringClaWCntQBBLocatorI 			= "WHEN  (%ValueConstruct) ('Incremental')"
-	$Global:PatchStringClaWCntQBBLocatorF 			= "WHEN  (%ValueConstruct) ('Filtered')"
+	$Global:PatchStringABQBBLocatorNWhen 	= "WHEN  (%ValueConstruct) ('None')"
+	$Global:PatchStringABQBBLocatorSWhen 	= "WHEN  (%ValueConstruct) ('Step')"
+	$Global:PatchStringABQBBLocatorEWhen 	= "WHEN  (%ValueConstruct) ('Entry')"
+	$Global:PatchStringABQBBLocatorIWhen 	= "WHEN  (%ValueConstruct) ('Incremental')"
+	$Global:PatchStringABQBBLocatorFWhen 	= "WHEN  (%ValueConstruct) ('Filtered')"
 }
 
 Function 	Display-Notice
@@ -102,8 +102,8 @@ Function 	Get-InputChoice
 {
 	$Global:InputChoice	= (Read-Host "Set Browse Locator to [D]efault (Step), [N]one, [S]tep, [E]ntry, [I]ncremental, [F]iltered or [Q]uit").ToUpper()
 	# If a lowercase value is input, the lowercase value and not uppercase value is passed to the function Patch-Template as a parameter!
-	# $Global:InputChoice	= Read-Host "Set Browse Locator to [D]efault (Step), [N]one, [S]tep, [E]ntry, [I]ncremental, [F]iltered or [Q]uit"
-	# $InputChoice			= $InputChoice.ToUpper() 
+	# $Global:InputChoice		= Read-Host "Set Browse Locator to [D]efault (Step), [N]one, [S]tep, [E]ntry, [I]ncremental, [F]iltered or [Q]uit"
+	# $InputChoice				= $InputChoice.ToUpper() 
 	
 	IF ( $InputChoice -ne "D" -And $InputChoice -ne "N" -And $InputChoice -ne "S" -And $InputChoice -ne "E" -And $InputChoice -ne "I" -And $InputChoice -ne "F" -And $InputChoice -ne "Q")
 		{
@@ -157,7 +157,7 @@ Function 	Get-TemplateFolder
 {
 	
 	Write-Host "Specify the Clarion Template Folder."
-	$TemplateFolderDefault 	= 'C:\Clarion11\template\win'	# Variable Scope: Function only
+	$TemplateFolderDefault 	= 'C:\Clarion11\template\win'	# Variable Scope: Function
 	$TemplateFolderInput	= Read-Host "Hit Enter to use the default Clarion 11 template path : $($TemplateFolderDefault) " # Variable Scope: Function only
 	$Global:TemplateFolder	= ($TemplateFolderDefault,$TemplateFolderInput)[[bool]$TemplateFolderInput] # Variable Scope: Global
 
@@ -172,8 +172,8 @@ Function 	Get-TemplateFolder
 Function 	Set-TemplateFilePaths
 {
 	$TemplateFolder						= $TemplateFolder.TrimEnd('\')
-	$Global:TemplateFilePathClaBrowse	= $TemplateFolder +'\'+ $TemplateClaBrowse		# Clarion Browse Template File, Variable Scope: Global
-	$Global:TemplateFilePathClaWCntrl	= $TemplateFolder +'\'+ $TemplateClaWCntrl		# Clarion Wizard Control Template File, Variable Scope: Global
+	$Global:TemplateFilePathABBrowse	= $TemplateFolder +'\'+ $TemplateABBrowse		# ABC Browse Template File, Variable Scope: Global
+	$Global:TemplateFilePathABWCntrl	= $TemplateFolder +'\'+ $TemplateABWCntrl		# ABC Wizard Control Template File, Variable Scope: Global
 }																				
 
 Function 	Patch-Template 
@@ -195,7 +195,7 @@ Function 	Patch-Template
 	# Used to help debug the parameter values - displays the passed parameter values before the code uses them.
 	# Write-Host "PatchChoice 						= $PatchChoice"
 	# Write-Host "TemplateFilePath 					= $TemplateFilePath"
-	# Write-Host "RegEx 								= $RegEx"
+	# Write-Host "RegEx 							= $RegEx"
 	# Write-Host "PatchStringNone 					= $PatchStringNone"
 	# Write-Host "PatchStringStep 					= $PatchStringStep"
 	# Write-Host "PatchStringEntry					= $PatchStringEntry"
@@ -204,8 +204,8 @@ Function 	Patch-Template
 	# Write-Host "PatchStringNone Length 			= $($PatchStringNone.Length)"
 	# Write-Host "PatchStringStep Length 			= $($PatchStringStep.Length)"
 	# Write-Host "PatchStringEntry Length			= $($PatchStringEntry.Length)"
-	# Write-Host "PatchStringIncremental Length 		= $($PatchStringIncremental.Length)"
-	# Write-Host "PatchStringFiltered Length			= $($PatchStringFiltered.Length)"
+	# Write-Host "PatchStringIncremental Length 	= $($PatchStringIncremental.Length)"
+	# Write-Host "PatchStringFiltered Length		= $($PatchStringFiltered.Length)"
 	# Write-Host "RegExInstances csv				= $($RegExInstances)"
 	
 	
@@ -275,12 +275,12 @@ Function 	Patch-Template
 Function  	Display-Finish
 {
 	Write-Host ""
-	Write-Host "Completed Patching: $TemplateFilePathClaBrowse"
-	Write-Host "Completed Patching: $TemplateFilePathClaWCntrl"
+	Write-Host "Completed Patching: $TemplateFilePathABBrowse"
+	Write-Host "Completed Patching: $TemplateFilePathABWCntrl"
 	Write-Host ""
 }
 
-# Lets call the above functions. Functions need to be declared before they can be called in PowerShell unlike some other languages.
+# Lets call the above functions. Functions need to be declared before they can be called in PowerShell
 Display-Notice
 
 Set-TemplateFileNames
@@ -290,19 +290,18 @@ Get-InputChoice
 
 Set-RegExStrings
 
-Set-PatchString-ClaBrow-LocatorType
-Set-PatchString-ClaBrow-SortLocatorType
-Set-PatchString-ClaBrow-BrowseLocatorType
+Set-PatchString-ABBrowse-SortNo
+Set-PatchString-ABBrowse-SortType
+Set-PatchString-ABBrowse-DefaultProc
 
-Set-PatchString-ClaWCnt-QBBLocatorType
-Set-PatchString-ClaWCnt-QBBLocator
+Set-PatchString-ABBrowse-QBBLocatorDefault
+Set-PatchString-ABBrowse-QBBLocatorWhen
 
-Patch-Template 	$InputChoice $TemplateFilePathClaBrowse $RegExClaBrowLocatorType 		$PatchStringClaBrowLocatorTypeN 	$PatchStringClaBrowLocatorTypeS 	$PatchStringClaBrowLocatorTypeE 	$PatchStringClaBrowLocatorTypeI 	$PatchStringClaBrowLocatorTypeF   
-Patch-Template 	$InputChoice $TemplateFilePathClaBrowse $RegExClaBrowSortLocatorType	$PatchStringClaBrowSortLocatorTypeN	$PatchStringClaBrowSortLocatorTypeS $PatchStringClaBrowSortLocatorTypeE $PatchStringClaBrowSortLocatorTypeI	$PatchStringClaBrowSortLocatorTypeF	   
-Patch-Template 	$InputChoice $TemplateFilePathClaBrowse $RegExClaBrowBrowseLocatorType 	$PatchStringClaBrowBrowseLocatorTypeN	$PatchStringClaBrowBrowseLocatorTypeS 	$PatchStringClaBrowBrowseLocatorTypeE 	$PatchStringClaBrowBrowseLocatorTypeI 	$PatchStringClaBrowBrowseLocatorTypeF 0,1	
-
-Patch-Template 	$InputChoice $TemplateFilePathClaWCntrl $RegExClaWCntQBBLocatorType 	$PatchStringClaWCntQBBLocatorTypeN	$PatchStringClaWCntQBBLocatorTypeS 	$PatchStringClaWCntQBBLocatorTypeE 	$PatchStringClaWCntQBBLocatorTypeI 	$PatchStringClaWCntQBBLocatorTypeF 
-
-Patch-Template 	$InputChoice $TemplateFilePathClaWCntrl $RegExClaWCntQBBLocator 	$PatchStringClaWCntQBBLocatorN	$PatchStringClaWCntQBBLocatorS 	$PatchStringClaWCntQBBLocatorE 	$PatchStringClaWCntQBBLocatorI 	$PatchStringClaWCntQBBLocatorF 
+Patch-Template 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseDefaultProc 		$PatchStringABBrowseNDefaultProc 	$PatchStringABBrowseSDefaultProc 	$PatchStringABBrowseEDefaultProc 	$PatchStringABBrowseIDefaultProc 	$PatchStringABBrowseFDefaultProc   
+Patch-Template 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseSortNo 			$PatchStringABBrowseNSortNo 		$PatchStringABBrowseSSortNo 		$PatchStringABBrowseESortNo 		$PatchStringABBrowseISortNo 		$PatchStringABBrowseFSortNo	   
+Patch-Template 	$InputChoice $TemplateFilePathABBrowse $RegExABCBrowseSortType 			$PatchStringABBrowseNSortType 		$PatchStringABBrowseSSortType 		$PatchStringABBrowseESortType 		$PatchStringABBrowseISortType 		$PatchStringABBrowseFSortType	   
 													    
+Patch-Template 	$InputChoice $TemplateFilePathABWCntrl $RegExABCQBBLocatorDefault 		$PatchStringABQBBLocatorNDefault 	$PatchStringABQBBLocatorSDefault 	$PatchStringABQBBLocatorEDefault 	$PatchStringABQBBLocatorIDefault 	$PatchStringABQBBLocatorFDefault	   
+Patch-Template 	$InputChoice $TemplateFilePathABWCntrl $RegExABCQBBLocatorWhen 			$PatchStringABQBBLocatorNWhen 		$PatchStringABQBBLocatorSWhen 		$PatchStringABQBBLocatorEWhen 		$PatchStringABQBBLocatorIWhen 		$PatchStringABQBBLocatorFWhen	   
+
 Display-Finish
