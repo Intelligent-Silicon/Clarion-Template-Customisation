@@ -10,7 +10,7 @@ Download script to required folder, open Powershell with Administrator rights, n
 
 Check the ```.\resize.ps1``` script for a relevant explanation on Powershell Execution Policy and Scope which can affect running a script.
 
-To prevent changing elements of the template, comment out with the hash (#) symbol the command starting with $content (see below) that corresponds to the relevant $OriginalStringX and $PatchStringX.
+To prevent changing elements of the template, comment out with the hash (#) symbol the the two command lines (see below) that corresponds to the relevant $OriginalStringX and $PatchStringX.
 
 ```
 $content = [System.IO.File]::ReadAllText($ClarionTemplateFilePathX).Replace($OriginalStringX,$PatchStringX)
