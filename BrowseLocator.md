@@ -7,7 +7,7 @@ A Powershell script to modify the templates to set the default ABC browse locato
 
 ### Instructions
 
-Download script to the required folder, open Powershell with Administrator rights, navigate to the required folder ```cd "c:\Long Folder Name with spaces"```, type ```.\ABCBrwLocate.ps1```
+Download script to the required folder, open Powershell with Administrator rights, navigate to the required folder ```cd "c:\Long Folder Name with spaces"```, type ```.\ABCBrwLocate.ps1``` or ```.\ClaBrwLocate.ps1``` .
 
 Check the ```.\ABCBrwLocate.ps1``` or ```.\ClaBrwLocate.ps1``` script for a relevant explanation on Powershell Execution Policy and Scope which can affect running a script.
 
