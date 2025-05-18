@@ -13,7 +13,7 @@ Check the ```.\ABCBrwLocate.ps1``` or ```.\ClaBrwLocate.ps1``` script for a rele
 
 To prevent changing elements of the template, comment out each line with the hash (#) symbol or encapsulate sections of code with the block comment (<#) before and (#>) after.
 
-The powershell scripts demonstrate the use of variable/object scopes, datatype specification, parameter passing with default parameter values and the use of Regular Expressions which can skip to n instance of a RegEx match.
+The powershell scripts demonstrate the use of variable/object scopes, datatype specification, parameter passing with default parameter values and the use of Regular Expressions which can skip to nth instance of a RegEx match.
 
 Modify ABC template 
 
